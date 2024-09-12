@@ -16,7 +16,7 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const db_1 = require("./db");
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(express_1.default.json()); // For parsing application/json
 app.use(express_1.default.static(path_1.default.join(__dirname, '../public'))); // Serve static files from the 'public' directory
