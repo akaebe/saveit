@@ -1,0 +1,221 @@
+/* Common Styles (applied to both light and dark modes) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    transition: background-color 0.3s;
+}
+
+h1 {
+    text-align: center;
+    transition: color 0.3s;
+}
+
+#todoForm {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#title {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px 0 0 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#priority {
+    padding: 10px;
+    border: 1px solid #333;
+    border-left: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#addBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#addBtn img {
+    width: 30px;
+    height: 30px;
+    filter: invert(34%) sepia(100%) saturate(1066%) hue-rotate(175deg) brightness(96%) contrast(92%);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.todo-text {
+    flex-grow: 1;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+
+.completed .todo-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.checkbox img {
+    width: 20px;
+    height: 20px;
+    filter: invert(34%) sepia(92%) saturate(1409%) hue-rotate(111deg) brightness(101%) contrast(100%);
+}
+
+.delete-icon, .edit-icon {
+    cursor: pointer;
+    padding: 0 5px;
+    width: 18px;
+    height: 18px;
+    padding-left: 5px;
+}
+
+.delete-icon img , .edit-icon img {
+    width: 16px;
+    height: 16px;
+    
+}
+
+.priority-badge {
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: bold;
+    
+    
+}
+
+/* Priority Badge Colors */
+
+
+.priority-2 {
+    background-color: orange;
+    color: white;
+}
+
+.priority-3 {
+    background-color: red;
+    color: white;
+}
+
+/* Light Mode (default) */
+body {
+    background-color: #ffffff; /* Light background */
+    color: #000000; /* Black text */
+}
+
+.container {
+    background-color: #f9f9f9; /* Light container */
+}
+
+#title, #priority {
+    background-color: #ffffff; /* Light input fields */
+    color: #000000; /* Black text */
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+}
+
+body.dark-mode .container {
+    background-color: #1f1f1f; /* Dark container */
+}
+
+body.dark-mode #title, body.dark-mode #priority {
+    background-color: #333333; /* Dark input fields */
+    color: #e0e0e0; /* Light text */
+}
+
+body.dark-mode .todo-text {
+    color: #e0e0e0; /* Light text for to-do list items */
+}
+
+/* Toggle Switch Styling */
+.switch {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+.completed { text-decoration: line-through; }
+#error-message { 
+  color: red; 
+  display: none; /* Initially hidden */
+  margin: 10px 0;
+}
+.priority-badge {
+  font-weight: bold;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <div id="error-message"></div>
+    <label class="switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="slider round"></span>
+    </label>
+
+    <form id="todoForm">
+      <input type="text" id="title" placeholder="Enter a new to-do" required>
+      <select id="priority" required>
+        <option value="">Priority</option>
+        <option value="1">Low</option>
+        <option value="2">Medium</option>
+        <option value="3">High</option>
+      </select>
+      <button type="submit" id="addBtn"><img src="./icons/add.png" alt="Add"></button>
+    </form>
+    <ul id="todoList">
+      <li class="todo-list-item">
+        <span class="delete-icon" data-id="${todo.id}">
+          <img src="icons/dustbin.png" alt="Trash Icon" />
+        </span>
+        <span class="edit-icon" data-id="${todo.id}">
+          <img src="icons/edit.png" alt="Edit Icon" />
+        </span>
+        <span class="todo-text">${todo.title}</span>
+        <input type="text" class="edit-input" value="${todo.title}" style="display:none;">
+        <span class="priority-badge priority-${todo.priority}">
+          ${['Low', 'Medium', 'High'][todo.priority - 1]}
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
