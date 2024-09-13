@@ -71,12 +71,12 @@ const getTodoById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getTodoById = getTodoById;
-const createTodo = (title, priority) => __awaiter(void 0, void 0, void 0, function* () {
+const createTodo = (title, priority, deadline) => __awaiter(void 0, void 0, void 0, function* () {
     let conn;
     try {
         conn = yield exports.pool.getConnection();
-        const result = yield conn.query('INSERT INTO todos (title, completed, priority) VALUES (?, ?, ?)', [title, false, priority]);
-        return { id: result.insertId, title, completed: false, priority };
+        const result = yield conn.query('INSERT INTO todos (title, completed, priority, deadline) VALUES (?, ?, ?, ?)', [title, false, priority, deadline]);
+        return { id: result.insertId, title, completed: false, priority, deadline };
     }
     catch (error) {
         console.error('Error creating todo:', error);

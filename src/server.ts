@@ -4,8 +4,9 @@ import { testDBConnection, getTodos, getTodoById, createTodo, updateTodo, delete
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const cors = require('cors');
 
-// Middleware
+app.use(cors()); // Add CORS middleware
 app.use(express.json()); // For parsing application/json
 app.use(express.static(path.join(__dirname, '../public'))); // Serve static files from the 'public' directory
 
@@ -48,16 +49,16 @@ app.get('/todos/:id', async (req, res) => {
 });
 
 app.post('/todos', async (req, res) => {
-  const { title, priority } = req.body;
-  if (title && priority !== undefined) {
+  const { title, priority, deadline } = req.body;
+  if (title && priority !== undefined && deadline !== undefined) {
     try {
-      const newTodo = await createTodo(title, priority);
+      const newTodo = await createTodo(title, priority, new Date(deadline));
       res.status(201).json(newTodo);
     } catch (error) {
       res.status(500).json({ message: 'Error creating todo' });
     }
   } else {
-    res.status(400).send('Title and priority are required');
+    res.status(400).send('Title, priority, and deadline are required');
   }
 });
 

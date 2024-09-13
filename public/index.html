@@ -10,21 +10,28 @@
   <div class="container">
     <h1>To-Do List</h1>
     <div id="error-message"></div>
-    <label class="switch">
+    <div class="dark-mode-toggle">
       <input type="checkbox" id="themeToggle">
-      <span class="slider round"></span>
-    </label>
-
+      <label for="themeToggle">
+        <i class="fas fa-moon"></i>
+      </label>
+    </div>
     <form id="todoForm">
-      <input type="text" id="title" placeholder="Enter a new to-do" required>
+      <input type="text" id="title" placeholder="Enter a new to-do" required minlength="3">
       <select id="priority" required>
-        <option value="">Priority</option>
-        <option value="1">Low</option>
-        <option value="2">Medium</option>
+        <option value="1" selected>Low</option>
         <option value="3">High</option>
       </select>
+      <input type="date" id="deadline" required>
+      <button id="calendar-icon" class="calendar-icon"><img src="./icons/check-mark (1).png" alt="Calendar"></button>
+      
+      
+      
       <button type="submit" id="addBtn"><img src="./icons/add.png" alt="Add"></button>
     </form>
+    
+
+
     <ul id="todoList">
       <li class="todo-list-item">
         <span class="delete-icon" data-id="${todo.id}">

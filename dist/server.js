@@ -17,7 +17,8 @@ const path_1 = __importDefault(require("path"));
 const db_1 = require("./db");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3001;
-// Middleware
+const cors = require('cors');
+app.use(cors()); // Add CORS middleware
 app.use(express_1.default.json()); // For parsing application/json
 app.use(express_1.default.static(path_1.default.join(__dirname, '../public'))); // Serve static files from the 'public' directory
 // Route to check database connection status
@@ -59,10 +60,10 @@ app.get('/todos/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 }));
 app.post('/todos', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { title, priority } = req.body;
-    if (title && priority !== undefined) {
+    const { title, priority, deadline } = req.body;
+    if (title && priority !== undefined && deadline !== undefined) {
         try {
-            const newTodo = yield (0, db_1.createTodo)(title, priority);
+            const newTodo = yield (0, db_1.createTodo)(title, priority, new Date(deadline));
             res.status(201).json(newTodo);
         }
         catch (error) {
@@ -70,7 +71,7 @@ app.post('/todos', (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         }
     }
     else {
-        res.status(400).send('Title and priority are required');
+        res.status(400).send('Title, priority, and deadline are required');
     }
 }));
 app.put('/todos/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {

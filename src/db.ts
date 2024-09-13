@@ -49,15 +49,15 @@ export const getTodoById = async (id: number) => {
   }
 };
 
-export const createTodo = async (title: string, priority: number) => {
+export const createTodo = async (title: string, priority: number, deadline: Date) => {
   let conn;
   try {
     conn = await pool.getConnection();
     const result = await conn.query(
-      'INSERT INTO todos (title, completed, priority) VALUES (?, ?, ?)',
-      [title, false, priority]
+      'INSERT INTO todos (title, completed, priority, deadline) VALUES (?, ?, ?, ?)',
+      [title, false, priority, deadline]
     );
-    return { id: result.insertId, title, completed: false, priority };
+    return { id: result.insertId, title, completed: false, priority, deadline };
   } catch (error) {
     console.error('Error creating todo:', error);
     throw error;
